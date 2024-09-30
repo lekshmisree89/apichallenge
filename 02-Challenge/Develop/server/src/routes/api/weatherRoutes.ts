@@ -14,7 +14,7 @@ router.post('/', async (req: Request, res: Response) => {
     }
 
     // Fetch weather data for the provided city
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=YOUR_API_KEY`);
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=3c1b6974ce24aa077912a74d5a570fe8`);
     
     if (!response.ok) {
       // Handle API errors such as city not found

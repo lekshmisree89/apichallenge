@@ -36,7 +36,7 @@ class HistoryService {
         } else {
           try {
             const jsonData = JSON.parse(data);
-            resolve(jsonData);
+            resolve(jsonData.cities);
           } catch (err) {
             reject(`Error parsing JSON: ${err}`);
           }
