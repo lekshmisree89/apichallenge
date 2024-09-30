@@ -44,16 +44,11 @@ const fetchWeather = async (cityName: string) => {
       body: JSON.stringify({ cityName }),
     });
 
-    console.log('Response Status:', response.status);
-    console.log('Response Body:', await response.text()); // Log raw response
-
     if (!response.ok) {
       throw new Error(`Error: ${response.status} ${response.statusText}`);
     }
 
     const weatherData = await response.json();
-    console.log('weatherData: ', weatherData);
-
     renderCurrentWeather(weatherData[0]);
     renderForecast(weatherData.slice(1));
   } catch (error) {
@@ -96,7 +91,8 @@ Render Functions
 */
 
 const renderCurrentWeather = (currentWeather: any): void => {
-  const { city, date, icon, iconDescription, tempF, windSpeed, humidity } =
+  console.log('log: currentWeather', currentWeather);
+  const { city, dt_txt: date, iconDescription, main: {temp: tempF, humidity}, wind: {speed: windSpeed}, weather: [{icon}] } =
     currentWeather;
 
   // convert the following to typescript
