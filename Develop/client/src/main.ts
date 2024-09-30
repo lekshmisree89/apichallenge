@@ -132,7 +132,8 @@ const renderForecast = (forecast: any): void => {
 };
 
 const renderForecastCard = (forecast: any) => {
-  const { date, icon, iconDescription, tempF, windSpeed, humidity } = forecast;
+  console.log('forecast', forecast);
+  const { dt_txt: date, wind: {speed: windSpeed}, main: {humidity, temp: tempF}, weather: [{icon, description: iconDescription}] } = forecast;
 
   const { col, cardTitle, weatherIcon, tempEl, windEl, humidityEl } =
     createForecastCard();
