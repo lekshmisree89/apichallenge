@@ -36,7 +36,7 @@ class HistoryService {
         } else {
           try {
             const jsonData = JSON.parse(data);
-            resolve(jsonData.cities);
+            resolve(jsonData);
           } catch (err) {
             reject(`Error parsing JSON: ${err}`);
           }
@@ -62,6 +62,7 @@ class HistoryService {
   public async getCities(): Promise<City[]> {
     try {
       const cities = await this.read();
+      console.log('cities', cities);
       return cities;
     } catch (err) {
       console.error(err);

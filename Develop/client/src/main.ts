@@ -55,16 +55,16 @@ const fetchWeather = async (cityName: string) => {
     console.log('weatherData: ', weatherData);
 
     renderCurrentWeather(weatherData[0]);
-  renderForecast(weatherData.slice(1));
+    renderForecast(weatherData.slice(1));
   } catch (error) {
-      console.error('Error fetching weather:', error);
-      // Optional: Show an error message to the user
+    console.error('Error fetching weather:', error);
+    // Optional: Show an error message to the user
   }
 
-  
-  
-  
-  };
+
+
+
+};
 
 
 
@@ -97,7 +97,7 @@ Render Functions
 
 const renderCurrentWeather = (currentWeather: any): void => {
   const { city, date, icon, iconDescription, tempF, windSpeed, humidity } =
-    currentWeather; 
+    currentWeather;
 
   // convert the following to typescript
   heading.textContent = `${city} (${date})`;
