@@ -51,16 +51,19 @@ class WeatherService {
 
   // Destructure the location data
   private destructureLocationData(locationData: any): Coordinates {
+    const firstLocation = locationData[0];
     return {
-      lat: locationData.lat,
-      lon: locationData.lon,
+      lat: firstLocation.lat,
+      lon: firstLocation.lon,
     };
   }
 
   // Fetch weather data
   private async fetchWeatherData(coordinates: Coordinates): Promise<any> {
     const response = await fetch(this.buildWeatherQuery(coordinates));
-    return response.json();
+    const data = await response.json();
+    console.log(data); // Log the response to inspect its structure
+    return data;
   }
 
   // Parse current weather from the API response
@@ -68,7 +71,7 @@ class WeatherService {
     const currentData = response.list[0];
     return new Weather(
       response.city.name,
-      new Date(currentData.dt * 1000).toLocaleDateString(),
+      new Date(currentData.dt * 1000).toLocaleString(),
       currentData.weather[0].icon,
       currentData.weather[0].description,
       currentData.main.temp,
@@ -79,7 +82,7 @@ class WeatherService {
 
   // Build forecast array method
   private buildForecastArray(currentWeather: Weather, weatherData: any[]): Weather[] {
-    return weatherData.map(data => new Weather(
+    return weatherData.slice(0, 4).map(data => new Weather(
       currentWeather.city,
       new Date(data.dt * 1000).toLocaleDateString(),
       data.weather[0].icon,
