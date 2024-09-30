@@ -91,7 +91,6 @@ Render Functions
 */
 
 const renderCurrentWeather = (currentWeather: any): void => {
-  console.log('log: currentWeather', currentWeather);
   const { city, dt_txt: date, iconDescription, main: {temp: tempF, humidity}, wind: {speed: windSpeed}, weather: [{icon}] } =
     currentWeather;
 
