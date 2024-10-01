@@ -28,7 +28,7 @@ class WeatherService {
   private apiKey: string;
 
   constructor() {
-    this.baseURL = process.env.API_BASE_URL!;
+    this.baseURL = 'https://api.openweathermap.org/data/2.5'; 
     this.apiKey = process.env.API_KEY!;
   }
 
@@ -82,9 +82,9 @@ class WeatherService {
 
   // Build forecast array method
   private buildForecastArray(currentWeather: Weather, weatherData: any[]): Weather[] {
-    return weatherData.slice(0, 4).map(data => new Weather(
+    return weatherData.slice(0,5).map(data => new Weather(
       currentWeather.city,
-      new Date(data.dt * 1000).toLocaleDateString(),
+      new Date(data.dt * 1000).toLocaleString(),
       data.weather[0].icon,
       data.weather[0].description,
       data.main.temp,
