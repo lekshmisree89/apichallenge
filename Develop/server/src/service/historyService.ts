@@ -25,6 +25,12 @@ class HistoryService {
 
     // Define the path to the searchHistory.json file
     this.filePath = path.join(__dirname, 'data', 'searchHistory.json');
+    if (!fs.existsSync(this.filePath)) {
+      fs.writeFileSync(this.filePath, "[]", 'utf8');  // Initialize with an empty array
+      console.log(`File created at: ${this.filePath}`);
+    } else {
+      console.log(`File already exists at: ${this.filePath}`);
+    }
   }
 
   // Define a read method that reads from the searchHistory.json file
