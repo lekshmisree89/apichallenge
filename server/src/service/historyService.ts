@@ -24,7 +24,7 @@ class HistoryService {
     const __dirname = path.dirname(__filename);
       
     // Define the path to the searchHistory.json file
-    this.filePath = path.join(__dirname, 'data', 'searchHistory.json');
+    this.filePath = path.join(__dirname, 'searchHistory.json');
     if (!fs.existsSync(this.filePath)) {
       fs.writeFileSync(this.filePath, "[]", 'utf8');  // Initialize with an empty array
       console.log(`File created at: ${this.filePath}`);
