@@ -22,7 +22,7 @@ class HistoryService {
     // Use import.meta.url to get the current directory in ES modules
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
-
+      
     // Define the path to the searchHistory.json file
     this.filePath = path.join(__dirname, 'data', 'searchHistory.json');
     if (!fs.existsSync(this.filePath)) {
